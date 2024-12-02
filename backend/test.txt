@@ -1,0 +1,1 @@
+dotenv/config --experimental-json-modules src/
