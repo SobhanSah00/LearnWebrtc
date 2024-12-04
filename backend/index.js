@@ -2,11 +2,13 @@ import express from "express"
 import {Server} from "socket.io"
 import bodyParser from "body-parser"
 
-const io = new Server(
-    {
-        cors: true
+const io = new Server({
+    cors: {
+        origin: "*", // Allow requests from any origin
+        methods: ["GET", "POST"], // Allow these HTTP methods
     }
-)
+});
+
 const app = express()
 app.use(bodyParser.json())
 
