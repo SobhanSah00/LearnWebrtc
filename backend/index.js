@@ -29,16 +29,21 @@ io.on('connection',(socket) => {
     })
 
     socket.on('offerForCall-User',(data) => {
-        const {emailId,offer} = data;
+        const {email,offer} = data;
         const fromEmail = socketToEmailMapping.get(socket.id)
-        const socketId = emailToSocketMapping.get(emailId);
+        const socketId = emailToSocketMapping.get(email);
         if(socketId){
             socket.to(socketId).emit('incomming-call',{from : fromEmail,offer})
         }
     })
 
     socket.on('call-accepted', (data) => {
-        const {}
+        const {email,ans} = data;
+        const socketId = emailToSocketMapping.get(email)
+        if(socketId){
+            // socket.to(socketId).emit('call-accepted',{from : socketToEmailMapping.get(socket)})
+            socket.to(socketId).emit('call-accepted',{ans})
+        }
     })
 })
 
