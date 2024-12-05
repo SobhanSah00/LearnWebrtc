@@ -3,10 +3,7 @@ import {Server} from "socket.io"
 import bodyParser from "body-parser"
 
 const io = new Server({
-    cors: {
-        origin: "*", // Allow requests from any origin
-        methods: ["GET", "POST"], // Allow these HTTP methods
-    }
+    cors: true
 });
 
 const app = express()
